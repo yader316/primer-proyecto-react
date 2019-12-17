@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import "./styles/styles.scss"
+import Cursos from './Cursos'
+import Banner from './Banner'
+import Formulario from './Formulario'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// const cursosArray = [
+//   {
+//     'titulo': 'Programación orientada a objetos con Go',
+//     'img': 'https://drupal.ed.team/sites/default/files/styles/medium/public/courses/images/go_0.jpg?itok=k2amLhrN',
+//     'precio': '250',
+//     'profe': 'Yader Mendoza'  
+//   },
+//   {
+//     'titulo': 'Git desde cero',
+//     'img': 'https://drupal.ed.team/sites/default/files/styles/16_9_medium/public/imagenes-cdn-edteam/2019-11/git-desde-cero-1.png',
+//     'precio': '100',
+//     'profe': 'Tasilany Mendoza' 
+//   },
+//   {
+//     'titulo': 'Angular desde cero',
+//     'img': 'https://drupal.ed.team/sites/default/files/styles/16_9_medium/public/imagenes-cdn-edteam/2019-08/angular.png',
+//     'precio': '200',
+//     'profe': 'Gaudy Boniche' 
+//   },
+//   {
+//     'titulo': 'HTML desde cero',
+//     'img': 'https://drupal.ed.team/sites/default/files/styles/medium/public/courses/images/HTML-2018.jpg?itok=Gyvm-W9t',
+//     'precio': '50',
+//     'profe': 'Alejandra Balmaceda' 
+//   }
+// ]
+
+const App = () => (
+  <>
+    <Banner/>  
+    <Formulario/>  
+
+    {/* <div className="ed-grid m-grid-3">
+      {
+        cursosArray.map(c => <Cursos title={c.titulo} image={c.img} precio= {c.precio} profesor={c.profe}/>)
+      }
+    </div> */}
+  </>
+)
 
 export default App;
