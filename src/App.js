@@ -3,45 +3,27 @@ import "./styles/styles.scss"
 import Cursos from './Cursos'
 import Banner from './Banner'
 import Formulario from './Formulario'
-
-// const cursosArray = [
-//   {
-//     'titulo': 'Programación orientada a objetos con Go',
-//     'img': 'https://drupal.ed.team/sites/default/files/styles/medium/public/courses/images/go_0.jpg?itok=k2amLhrN',
-//     'precio': '250',
-//     'profe': 'Yader Mendoza'  
-//   },
-//   {
-//     'titulo': 'Git desde cero',
-//     'img': 'https://drupal.ed.team/sites/default/files/styles/16_9_medium/public/imagenes-cdn-edteam/2019-11/git-desde-cero-1.png',
-//     'precio': '100',
-//     'profe': 'Tasilany Mendoza' 
-//   },
-//   {
-//     'titulo': 'Angular desde cero',
-//     'img': 'https://drupal.ed.team/sites/default/files/styles/16_9_medium/public/imagenes-cdn-edteam/2019-08/angular.png',
-//     'precio': '200',
-//     'profe': 'Gaudy Boniche' 
-//   },
-//   {
-//     'titulo': 'HTML desde cero',
-//     'img': 'https://drupal.ed.team/sites/default/files/styles/medium/public/courses/images/HTML-2018.jpg?itok=Gyvm-W9t',
-//     'precio': '50',
-//     'profe': 'Alejandra Balmaceda' 
-//   }
-// ]
+import CourseGrid from './CourseGrid'
+import Course from './curso'
+import MainMenu from './MainMenu'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 const App = () => (
-  <>
-    <Banner/>  
-    <Formulario/>  
-
-    {/* <div className="ed-grid m-grid-3">
-      {
-        cursosArray.map(c => <Cursos title={c.titulo} image={c.img} precio= {c.precio} profesor={c.profe}/>)
-      }
-    </div> */}
-  </>
+  <Router>
+    <MainMenu/>
+    <Switch>
+      <Route path="/" exact component={Banner}/>
+      <Route path="/cursos/:id" component={Course}/>
+      <Route path="/cursos" component={CourseGrid}/>
+      <Route path="/formulario" component={() => <Formulario name="pagina de contacto"/>}/>
+      <Route component={() => (
+        <div className="ed-grid">
+          <h1> Error 404</h1>
+          <span>pagina no encontrada</span>
+        </div>
+      )}/>
+    </Switch>
+  </Router>
 )
 
 export default App;
