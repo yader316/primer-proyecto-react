@@ -1,7 +1,6 @@
 import React from 'react'
-import Cursos from './Cursos'
 
-const cursosArray = [
+const CursesArray = [
   {
     'id': 1,
     'titulo': 'Programación orientada a objetos con Go',
@@ -31,22 +30,24 @@ const cursosArray = [
     'profe': 'Alejandra Balmaceda' 
   }
 ]
+const Course = ({ match }) => {
 
-const CourseGrid = () =>(
-  <div className="ed-grid m-grid-4">
-    {
-      cursosArray.map(c => (
-        <Cursos 
-          key={c.id} 
-          id= {c.id}
-          title={c.titulo} 
-          image={c.img} 
-          precio= {c.precio} 
-          profesor={c.profe}
-        />
-      ))
-    }
-  </div> 
-)  
+  const cursoActual = CursesArray.filter(c => c.id === parseInt(match.params.id))[0]
+  
+  return (
+    <div className="ed-grid m-grid-3">
+      {
+        cursoActual ? (
+        <>
+          <h1 className="m-cols-3"> {cursoActual.titulo}</h1>
+          <img src={cursoActual.img} alt={cursoActual.titulo} className="m-cols-1"/>  
+          <p className="m-cols-2">profesor: {cursoActual.profe}</p>
+        </>  
+        ) : 
+          <h1>el curso no existe</h1>
+      }
+    </div>
+  )
+}
 
-export default CourseGrid
+export default Course

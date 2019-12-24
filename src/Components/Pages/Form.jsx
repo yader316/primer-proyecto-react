@@ -1,28 +1,28 @@
 import React from 'react'
 //  para crear un formulario ya no creamos una funcion si no una clase
 // creando componentes de clases
-class Formulario  extends React.Component {
+class Form  extends React.Component {
   constructor(props) { 
     super(props)  
     
     this.state = {
-      nombre: "",
-      correo: ""
+      name: "",
+      email: ""
     }
 
-    this.cambiarNombre = this.cambiarNombre.bind(this)
-    this.cambiarCorreo = this.cambiarCorreo.bind(this)
+    this.changeName = this.changeName.bind(this)
+    this.changeEmail = this.changeEmail.bind(this)
 
   }
 
-  cambiarNombre(e){
+  changeName(e){
     this.setState({
-      nombre: e.target.value
+      name: e.target.value
     })
   }
-  cambiarCorreo(e){
+  changeEmail(e){
     this.setState({
-      correo: e.target.value
+      email: e.target.value
     })
   }
   render() {
@@ -35,13 +35,13 @@ class Formulario  extends React.Component {
               <label htmlFor="">Nombre Completo</label>
               <input 
                 type="text" 
-                onChange={this.cambiarNombre}/>
+                onChange={this.changeName}/>
             </div>
             <div className="form__item">
               <label htmlFor="">Correo Electronico</label>
               <input 
                 type="text"
-                onChange={ this.cambiarCorreo}/>
+                onChange={ this.changeEmail}/>
             </div>
             {/* <div className="form__item">
               <input type="submit" className="button full" value="Enviar"/>
@@ -49,12 +49,12 @@ class Formulario  extends React.Component {
           </div>
         </form>
         <div>
-          <h2>{`Hola ${this.state.nombre}`}</h2>
-          <span>{`Tu correo es: ${this.state.correo}`}</span>
+          <h2>{`Hola ${this.state.name}`}</h2>
+          <span>{`Tu correo es: ${this.state.email}`}</span>
         </div>
       </div>
     )
   }
 }
   
-export default  Formulario
+export default  Form
