@@ -1,48 +1,32 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
+import useCourse from '../CustomHooks/useCourse'
 
-const CursesArray = [
-  {
-    'id': 1,
-    'titulo': 'Programación orientada a objetos con Go',
-    'img': 'https://drupal.ed.team/sites/default/files/styles/medium/public/courses/images/go_0.jpg?itok=k2amLhrN',
-    'precio': '250',
-    'profe': 'Yader Mendoza'  
-  },
-  {
-    'id': 2,
-    'titulo': 'Git desde cero',
-    'img': 'https://drupal.ed.team/sites/default/files/styles/16_9_medium/public/imagenes-cdn-edteam/2019-11/git-desde-cero-1.png',
-    'precio': '100',
-    'profe': 'Tasilany Mendoza' 
-  },
-  {
-    'id': 3,
-    'titulo': 'Angular desde cero',
-    'img': 'https://drupal.ed.team/sites/default/files/styles/16_9_medium/public/imagenes-cdn-edteam/2019-08/angular.png',
-    'precio': '200',
-    'profe': 'Gaudy Boniche' 
-  },
-  {
-    'id': 4,
-    'titulo': 'HTML desde cero',
-    'img': 'https://drupal.ed.team/sites/default/files/styles/medium/public/courses/images/HTML-2018.jpg?itok=Gyvm-W9t',
-    'precio': '50',
-    'profe': 'Alejandra Balmaceda' 
-  }
-]
 const Course = ({ match }) => {
 
-  const cursoActual = CursesArray.filter(c => c.id === parseInt(match.params.id))[0]
-  
+  const [comment, setComment] = useState("Sin Comentarios")
+
+  const course = useCourse(match.params.id)
+  const myComment = e =>{
+    setComment(e.target.value)
+  }
+
   return (
     <div className="ed-grid m-grid-3">
       {
-        cursoActual ? (
-        <>
-          <h1 className="m-cols-3"> {cursoActual.titulo}</h1>
-          <img src={cursoActual.img} alt={cursoActual.titulo} className="m-cols-1"/>  
-          <p className="m-cols-2">profesor: {cursoActual.profe}</p>
-        </>  
+        course ? (
+        <div className="ed-grid">
+          <div className="l-block">
+            <h1 className="m-cols-3"> {course.titulo}</h1>
+            <img src={course.img} alt={course.titulo} className="m-cols-1"/>  
+            <p className="m-cols-2">profesor: {course.profe}</p>
+          </div>
+          <div>
+            <h2>Escribe tu comentario</h2> 
+            <input type="text" placeholder="Escribe ..." onChange={myComment.bind(this)}/>
+            <p>{comment}</p>
+          </div>
+        </div>  
         ) : 
           <h1>el curso no existe</h1>
       }
